@@ -50,8 +50,6 @@
 #define MAX_LONGOPT 2
 #define MAX_SHORTOPT 10
 
-# define TERMCAP_BUFF_SIZE 2048
-
 #define FT_SELECT_ERROR -1
 #define FT_SELECT_SUCCESS 0
 
@@ -64,8 +62,10 @@ typedef struct	s_ft_select_internal_data
 }				t_select;
 
 
-int argument_len_check(int argc);
-int arg_man(int argc, char **argv);
-int init_term(t_select *select);
+int		argument_len_check(int argc);
+int		arg_man(int argc, char **argv);
+int		init_term(t_select *select);
+void	init_select(t_select *select);
+
 
 #endif

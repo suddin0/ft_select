@@ -83,9 +83,11 @@ LIBFT_MAKE_FLAGS =
 
 ## sources and objects where path names are removed.
 ## Add all your source files to this variable
-SRC		=		$(MAIN)					\
+SRC		=		$(MAIN)							\
 				$(P_SRC)/argument_len_check.c	\
-				$(P_SRC)/arg_man.c	\
+				$(P_SRC)/arg_man.c				\
+				$(P_SRC)/init_term.c			\
+				$(P_SRC)/init_select.c			\
 
 
 ## Objects without path names
