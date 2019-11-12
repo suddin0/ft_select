@@ -1,4 +1,5 @@
 #include "ft_select.h"
+#include <ctype.h>
 
 int main(int argc, char **argv, UNUSED char **envp)
 {
@@ -15,6 +16,11 @@ int main(int argc, char **argv, UNUSED char **envp)
 	if(init_term(&select) == FT_SELECT_ERROR)
 		return (1);
 
-	while(1);
+	char c;
+
+	while(read(FT_STDIN_FD, &c, 1) > 0)
+	{
+		ft_printf("%d \n", c);
+	}
 	return 0;
 }

@@ -17,7 +17,8 @@ static int init_termios(t_select *select)
 		return (FT_SELECT_ERROR);
 	}
 
-	select->termios_setup.c_lflag =  ~(ICANON | ECHO);
+	// select->termios_setup.c_lflag =  ~(ICANON | ECHO);
+	select->termios_setup.c_lflag =  ~(ECHO);
 	select->termios_setup.c_cc[VMIN] = 1;
 	select->termios_setup.c_cc[VTIME] = 0;
 	if(tcsetattr(STDERR_FILENO, TCSANOW, &select->termios_setup))
@@ -64,7 +65,8 @@ int init_term(t_select *select)
 		return (FT_SELECT_ERROR);
 	}
 
+	// tputs(tgetstr("ti", NULL), 1, ft_putc);
 	tputs(tgetstr("ti", NULL), 1, ft_putc);
-	tputs(tgetstr("vi", NULL), 1, ft_putc);
+	// tputs(tgetstr("vi", NULL), 1, ft_putc);
 	return (FT_SELECT_SUCCESS);
 }
