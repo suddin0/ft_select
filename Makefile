@@ -88,6 +88,13 @@ SRC		=		$(MAIN)							\
 				$(P_SRC)/arg_man.c				\
 				$(P_SRC)/init_term.c			\
 				$(P_SRC)/init_select.c			\
+				$(P_SRC)/free_select.c			\
+				$(P_SRC)/signal_man.c			\
+				$(P_SRC)/get_select.c			\
+				$(P_SRC)/set_terminal_size.c	\
+				$(P_SRC)/show_all_data.c		\
+				$(P_SRC)/set_arg_data.c			\
+				$(P_SRC)/ft_putc.c				\
 
 
 ## Objects without path names

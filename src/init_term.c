@@ -17,8 +17,8 @@ static int init_termios(t_select *select)
 		return (FT_SELECT_ERROR);
 	}
 
-	// select->termios_setup.c_lflag =  ~(ICANON | ECHO);
-	select->termios_setup.c_lflag =  ~(ECHO);
+	select->termios_setup.c_lflag =  ~(ICANON | ECHO);
+	// select->termios_setup.c_lflag =  ~(ECHO);
 	select->termios_setup.c_cc[VMIN] = 1;
 	select->termios_setup.c_cc[VTIME] = 0;
 	if(tcsetattr(STDERR_FILENO, TCSANOW, &select->termios_setup))
@@ -29,11 +29,6 @@ static int init_termios(t_select *select)
 	return (FT_SELECT_SUCCESS);
 }
 
-int ft_putc(int c)
-{
-	ft_putchar(c);
-	return (1);
-}
 
 int init_term(t_select *select)
 {
@@ -64,9 +59,9 @@ int init_term(t_select *select)
 		ft_dprintf(FT_STDERR_FD, "[-] Error : no entry for the terminal type `%s`.\n", select->term_name);
 		return (FT_SELECT_ERROR);
 	}
-
+	set_terminal_size(select);
 	// tputs(tgetstr("ti", NULL), 1, ft_putc);
 	tputs(tgetstr("ti", NULL), 1, ft_putc);
-	// tputs(tgetstr("vi", NULL), 1, ft_putc);
+	// tputs(tgetstr("vi", NULL), 1, ft_putc); // cursor invisible
 	return (FT_SELECT_SUCCESS);
 }
