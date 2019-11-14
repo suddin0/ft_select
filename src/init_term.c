@@ -30,6 +30,26 @@ static int init_termios(t_select *select)
 }
 
 
+void init_cap(t_cap *cap)
+{
+	cap->cm	= 				tgetstr("cm", NULL);
+	cap->ti	= 				tgetstr("ti", NULL);
+	cap->te	= 				tgetstr("ti", NULL);
+	cap->vi	=				tgetstr("vi", NULL);
+	cap->ve	=				tgetstr("ve", NULL);
+	cap->key_left =			tgetstr("kl", NULL);
+	cap->key_right =		tgetstr("kr", NULL);
+	cap->key_up =			tgetstr("ku", NULL);
+	cap->key_dowm =			tgetstr("kd", NULL);
+	cap->key_delete =		tgetstr("kD", NULL);
+	cap->key_page_up =		tgetstr("kP", NULL); /* A verifier */
+	cap->key_page_down =	tgetstr("kN", NULL); /* A verifier */
+	cap->key_home =			tgetstr("kH", NULL);
+	cap->key_tab_left =		tgetstr("XX", NULL);
+	cap->key_scroll_up =	tgetstr("XX", NULL);
+	cap->key_scroll_down =	tgetstr("XX", NULL);
+}
+
 int init_term(t_select *select)
 {
 	int success;
@@ -60,8 +80,9 @@ int init_term(t_select *select)
 		return (FT_SELECT_ERROR);
 	}
 	set_terminal_size(select);
+
 	// tputs(tgetstr("ti", NULL), 1, ft_putc);
-	tputs(tgetstr("ti", NULL), 1, ft_putc);
-	// tputs(tgetstr("vi", NULL), 1, ft_putc); // cursor invisible
+	tputs(select->cap.ti, 1, ft_putc);
+	// tputs(select->cap.vi, 1, ft_putc); // cursor invisible
 	return (FT_SELECT_SUCCESS);
 }

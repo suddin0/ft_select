@@ -7,4 +7,11 @@ void free_select(t_select *select)
 		free(select->data);
 		select->data = NULL;
 	}
+
+	if(select->cap.cm)
+		free(select->cap.cm);
+	if(select->cap.ti)
+		free(select->cap.ti);
+	if(select->cap.vi)
+		free(select->cap.vi);
 }

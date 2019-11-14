@@ -95,6 +95,12 @@ SRC		=		$(MAIN)							\
 				$(P_SRC)/show_all_data.c		\
 				$(P_SRC)/set_arg_data.c			\
 				$(P_SRC)/ft_putc.c				\
+				$(P_SRC)/reset_terminal.c		\
+				$(P_SRC)/set_cursor.c			\
+				$(P_SRC)/keys/get_seq.c			\
+				$(P_SRC)/keys/escape_key_man.c	\
+				$(P_SRC)/keys/key_man.c			\
+				$(P_SRC)/loop.c					\
 
 
 ## Objects without path names
@@ -105,7 +111,13 @@ OBJ_P	=	$(addprefix $(P_OBJ)/,$(OBJ))	## addprefix add the
 											## path name to the files...
 
 ## All header (.h) files so if they changed then all files will be recompiled
-HEADERS =	$(P_INCLUDE)/ft_select.h
+HEADERS =	$(P_INCLUDE)/ft_select.h		\
+			$(P_INCLUDE)/keys.h				\
+			$(P_INCLUDE)/select_defines.h	\
+			$(P_INCLUDE)/select_types.h		\
+			$(P_INCLUDE)/select_struct.h	\
+
+
 
 ## Start making here
 __START: all

@@ -32,7 +32,8 @@ void show_all_data(t_select *select)
 	if(select->max_data_len >= select->col)
 		data_par_line = 1;
 	else
-		data_par_line = select->col / (select->max_data_len + 1);
+		data_par_line = select->virtual_col / (select->max_data_len + 1);
+	
 	while(i < select->max_arg_data)
 	{
 		if(select->data[i].hidden == FALSE)
