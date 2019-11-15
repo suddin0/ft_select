@@ -72,6 +72,13 @@ int			get_seq(t_cap cap, char *data);
 void		escape_key_man( t_select *select, int seq, int *loop_control);
 void		key_man(t_select *select, char key, int *loop_control);
 
+/**
+* Everything related to visual
+**/
+
+int			get_data_par_line(t_select *select);
+int			get_data_index(t_select *select);
+int			get_max_data_index(t_select *select);
 
 
 #endif

@@ -83,24 +83,27 @@ LIBFT_MAKE_FLAGS =
 
 ## sources and objects where path names are removed.
 ## Add all your source files to this variable
-SRC		=		$(MAIN)							\
-				$(P_SRC)/argument_len_check.c	\
-				$(P_SRC)/arg_man.c				\
-				$(P_SRC)/init_term.c			\
-				$(P_SRC)/init_select.c			\
-				$(P_SRC)/free_select.c			\
-				$(P_SRC)/signal_man.c			\
-				$(P_SRC)/get_select.c			\
-				$(P_SRC)/set_terminal_size.c	\
-				$(P_SRC)/show_all_data.c		\
-				$(P_SRC)/set_arg_data.c			\
-				$(P_SRC)/ft_putc.c				\
-				$(P_SRC)/reset_terminal.c		\
-				$(P_SRC)/set_cursor.c			\
-				$(P_SRC)/keys/get_seq.c			\
-				$(P_SRC)/keys/escape_key_man.c	\
-				$(P_SRC)/keys/key_man.c			\
-				$(P_SRC)/loop.c					\
+SRC		=		$(MAIN)								\
+				$(P_SRC)/argument_len_check.c		\
+				$(P_SRC)/arg_man.c					\
+				$(P_SRC)/init_term.c				\
+				$(P_SRC)/init_select.c				\
+				$(P_SRC)/free_select.c				\
+				$(P_SRC)/signal_man.c				\
+				$(P_SRC)/get_select.c				\
+				$(P_SRC)/show_all_data.c			\
+				$(P_SRC)/set_arg_data.c				\
+				$(P_SRC)/ft_putc.c					\
+				$(P_SRC)/reset_terminal.c			\
+				$(P_SRC)/set_cursor.c				\
+				$(P_SRC)/keys/get_seq.c				\
+				$(P_SRC)/keys/escape_key_man.c		\
+				$(P_SRC)/keys/key_man.c				\
+				$(P_SRC)/loop.c						\
+				$(P_SRC)/visual/set_terminal_size.c	\
+				$(P_SRC)/visual/get_data_par_line.c	\
+				$(P_SRC)/visual/get_data_index.c	\
+				$(P_SRC)/visual/get_max_data_index.c\
 
 
 ## Objects without path names

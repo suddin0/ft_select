@@ -6,7 +6,13 @@
 void key_up(UNUSED t_select *select){}
 void key_dowm(UNUSED t_select *select){}
 void key_left(UNUSED t_select *select){}
-void key_right(UNUSED t_select *select){}
+void key_right(UNUSED t_select *select)
+{
+	// set_cursor(select, 0, 0);
+
+	// tputs(select->cap.cd, 1, ft_putc);
+	ft_dprintf(SELECT_DATA_FD, "Came here\n");
+}
 void key_delete(UNUSED t_select *select){}
 void key_page_up(UNUSED t_select *select){}
 void key_page_down(UNUSED t_select *select){}

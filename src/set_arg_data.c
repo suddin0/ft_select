@@ -21,7 +21,6 @@ int set_arg_data(t_select *select, char **argv)
 		select->data[i].data_len = ft_strlen(argv[arg_i]);
 		if(select->data[i].data_len > select->max_data_len)
 			select->max_data_len = select->data[i].data_len;
-		select->data[i].hidden = FALSE;
 		select->data[i].selected = FALSE;
 		i++;
 		arg_i++;

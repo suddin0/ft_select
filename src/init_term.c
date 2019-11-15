@@ -30,13 +30,17 @@ static int init_termios(t_select *select)
 }
 
 
-void init_cap(t_cap *cap)
+static inline void init_cap(t_cap *cap)
 {
 	cap->cm	= 				tgetstr("cm", NULL);
 	cap->ti	= 				tgetstr("ti", NULL);
 	cap->te	= 				tgetstr("ti", NULL);
 	cap->vi	=				tgetstr("vi", NULL);
 	cap->ve	=				tgetstr("ve", NULL);
+	cap->cl	=				tgetstr("cl", NULL);
+	cap->cd	=				tgetstr("cd", NULL);
+	cap->mr	=				tgetstr("mr", NULL);
+	cap->me =				tgetstr("me", NULL);
 	cap->key_left =			tgetstr("kl", NULL);
 	cap->key_right =		tgetstr("kr", NULL);
 	cap->key_up =			tgetstr("ku", NULL);
@@ -79,10 +83,12 @@ int init_term(t_select *select)
 		ft_dprintf(FT_STDERR_FD, "[-] Error : no entry for the terminal type `%s`.\n", select->term_name);
 		return (FT_SELECT_ERROR);
 	}
-	set_terminal_size(select);
+	init_cap(&(select->cap));
 
 	// tputs(tgetstr("ti", NULL), 1, ft_putc);
+	tputs(select->cap.vi, 1, ft_putc); // cursor invisible
 	tputs(select->cap.ti, 1, ft_putc);
-	// tputs(select->cap.vi, 1, ft_putc); // cursor invisible
+	set_terminal_size(select);
+	set_cursor(select, 0, 0);
 	return (FT_SELECT_SUCCESS);
 }
