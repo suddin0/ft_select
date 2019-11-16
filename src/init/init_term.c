@@ -2,28 +2,26 @@
 
 static int init_termios(t_select *select)
 {
-	if(!isatty(FT_STDIN_FD))
+	if(!isatty(select->data_fd))
 	{
 		ft_dprintf(FT_STDERR_FD, "[-] Error : The input filedescriptor");
 		ft_dprintf(FT_STDERR_FD, " is not a terminal.\n");
 		return (FT_SELECT_ERROR);
 	}
-
-	if(tcgetattr(FT_STDIN_FD, &(select->termios_setup))\
-		|| tcgetattr(FT_STDIN_FD, &(select->termios_backup)))
+	if(tcgetattr(select->data_fd, &(select->termios_setup))\
+		|| tcgetattr(select->data_fd, &(select->termios_backup)))
 	{
 		ft_dprintf(FT_STDERR_FD, "[-] Error : unable to get terminal infor");
 		ft_dprintf(FT_STDERR_FD, "mations (termios) : %s.\n", strerror(errno));
 		return (FT_SELECT_ERROR);
 	}
-
-	select->termios_setup.c_lflag =  ~(ICANON | ECHO);
-	// select->termios_setup.c_lflag =  ~(ECHO);
-	select->termios_setup.c_cc[VMIN] = 1;
-	select->termios_setup.c_cc[VTIME] = 0;
-	if(tcsetattr(STDERR_FILENO, TCSANOW, &select->termios_setup))
+	// select->termios_setup.c_lflag =  ~(ICANON | ECHO);
+	select->termios_setup.c_lflag =  ~(ECHO);
+	// select->termios_setup.c_cc[VMIN] = 1;
+	// select->termios_setup.c_cc[VTIME] = 0;
+	if(tcsetattr(select->data_fd, TCSANOW, &select->termios_setup))
 	{
-		ft_dprintf(FT_STDERR_FD, "[-] Error : Unable to set terminal settings (termios).\n");
+		ft_dprintf(FT_STDERR_FD, "[-] Error : %s\n", ERR_TERMSETTING);
 		return (FT_SELECT_ERROR);
 	}
 	return (FT_SELECT_SUCCESS);
@@ -54,41 +52,43 @@ static inline void init_cap(t_cap *cap)
 	cap->key_scroll_down =	tgetstr("XX", NULL);
 }
 
-int init_term(t_select *select)
+static int init_termcap(t_select *select)
 {
 	int success;
 
-	if(init_termios(select) == FT_SELECT_ERROR)
-		return (FT_SELECT_ERROR);
 	select->term_name = getenv ("TERM");
 	if(!select->term_name)
 	{
-		ft_dprintf(FT_STDERR_FD, "[-] Error : There is no envoronment variable called `TERM`.\n");
-		ft_dprintf(FT_STDERR_FD, "Without this variable we can not initiate termcap.\n");
+		ft_dprintf(FT_STDERR_FD, "[-] Error : %s\n%s\n", ERR_TENV, ERR_TINIT);
 		return (FT_SELECT_ERROR);
 	}
-
 	if(IS_UNIX)
 		success = tgetent (select->termcap_buff, select->term_name);
 	else
 		success = tgetent (NULL, select->term_name);
 	if(success < 0)
 	{
-		ft_dprintf(FT_STDERR_FD, "[-] Error : Unable to acces the termcap database.\n");
+		ft_dprintf(FT_STDERR_FD, "[-] Error : %s\n", ERR_ACC_DB);
 		return (FT_SELECT_ERROR);
-
 	}
-	else if(success < 0)
+	else if(success == 0)
 	{
-		ft_dprintf(FT_STDERR_FD, "[-] Error : no entry for the terminal type `%s`.\n", select->term_name);
+		ft_dprintf(FT_STDERR_FD, "[-] Error : %s`%s`.\n", ERR_TENTRY, select->term_name);
 		return (FT_SELECT_ERROR);
 	}
 	init_cap(&(select->cap));
+	return (FT_SELECT_SUCCESS);
+}
 
-	// tputs(tgetstr("ti", NULL), 1, ft_putc);
+int init_term(t_select *select)
+{
+	if(init_termios(select) == FT_SELECT_ERROR)
+		return (FT_SELECT_ERROR);
+	if(init_termcap(select) == FT_SELECT_ERROR)
+		return (FT_SELECT_ERROR);
 	tputs(select->cap.vi, 1, ft_putc); // cursor invisible
 	tputs(select->cap.ti, 1, ft_putc);
 	set_terminal_size(select);
-	set_cursor(select, 0, 0);
+	set_cursor(&(select->cap), 0, 0);
 	return (FT_SELECT_SUCCESS);
 }

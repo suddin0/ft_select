@@ -7,6 +7,8 @@ void free_select(t_select *select)
 		free(select->data);
 		select->data = NULL;
 	}
+	if(select->data_fd != -1)
+		close(select->data_fd);
 
 	if(select->cap.cm)
 		free(select->cap.cm);

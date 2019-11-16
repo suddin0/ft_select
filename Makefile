@@ -83,27 +83,41 @@ LIBFT_MAKE_FLAGS =
 
 ## sources and objects where path names are removed.
 ## Add all your source files to this variable
-SRC		=		$(MAIN)								\
-				$(P_SRC)/argument_len_check.c		\
-				$(P_SRC)/arg_man.c					\
-				$(P_SRC)/init_term.c				\
-				$(P_SRC)/init_select.c				\
-				$(P_SRC)/free_select.c				\
-				$(P_SRC)/signal_man.c				\
-				$(P_SRC)/get_select.c				\
-				$(P_SRC)/show_all_data.c			\
-				$(P_SRC)/set_arg_data.c				\
-				$(P_SRC)/ft_putc.c					\
-				$(P_SRC)/reset_terminal.c			\
-				$(P_SRC)/set_cursor.c				\
-				$(P_SRC)/keys/get_seq.c				\
-				$(P_SRC)/keys/escape_key_man.c		\
-				$(P_SRC)/keys/key_man.c				\
-				$(P_SRC)/loop.c						\
-				$(P_SRC)/visual/set_terminal_size.c	\
-				$(P_SRC)/visual/get_data_par_line.c	\
-				$(P_SRC)/visual/get_data_index.c	\
-				$(P_SRC)/visual/get_max_data_index.c\
+SRC		=		$(MAIN)										\
+				$(P_SRC)/init/arg_man.c						\
+				$(P_SRC)/init/init_term.c					\
+				$(P_SRC)/init/init_select.c					\
+				$(P_SRC)/init/set_arg_data.c				\
+				$(P_SRC)/init/argument_len_check.c			\
+				$(P_SRC)/init/init_data.c					\
+				$(P_SRC)/free_select.c						\
+				$(P_SRC)/signal_man.c						\
+				$(P_SRC)/get_select.c						\
+				$(P_SRC)/ft_putc.c							\
+				$(P_SRC)/loop.c								\
+				$(P_SRC)/keys/get_seq.c						\
+				$(P_SRC)/keys/escape_key_man.c				\
+				$(P_SRC)/keys/key_man.c						\
+				$(P_SRC)/keys/key_seq_table_init.c			\
+				$(P_SRC)/visual/get_max_str_len.c			\
+				$(P_SRC)/visual/curs_move/curs_move_up.c	\
+				$(P_SRC)/visual/curs_move/curs_move_down.c	\
+				$(P_SRC)/visual/curs_move/curs_move_right.c	\
+				$(P_SRC)/visual/curs_move/curs_move_left.c	\
+				$(P_SRC)/visual/reset_terminal.c			\
+				$(P_SRC)/visual/set_cursor.c				\
+				$(P_SRC)/visual/set_terminal_size.c			\
+				$(P_SRC)/visual/get_data_par_line.c			\
+				$(P_SRC)/visual/get_data_index.c			\
+				$(P_SRC)/visual/get_max_data_index.c		\
+				$(P_SRC)/visual/get_off.c					\
+				$(P_SRC)/visual/get_on.c					\
+				$(P_SRC)/visual/index_of.c					\
+				$(P_SRC)/visual/clear_screen.c				\
+				$(P_SRC)/visual/set_cur_top_line.c			\
+				$(P_SRC)/visual/get_max_data_line.c			\
+				$(P_SRC)/visual/print_pack.c				\
+				$(P_SRC)/visual/print_data.c				\
 
 
 ## Objects without path names

@@ -22,7 +22,7 @@ static inline void set_opt(/* some option data holder, */ UNUSED int opt)
 }
 
 
-int arg_man(t_select *select, int argc, char **argv)
+int arg_man(UNUSED t_select *select, int argc, char **argv)
 {
 	t_getopt_arg	arg;
 	t_option		longopt[MAX_LONGOPT + 1];
@@ -31,6 +31,8 @@ int arg_man(t_select *select, int argc, char **argv)
 
 	arg.argc = argc;
 	arg.argv = argv;
+	if(argc < 2)
+		exit(0);
 	ft_strcpy(shortopt, "abcdefghijklnoprstubwxyz");
 	set_longopt_list(longopt);
 
@@ -42,7 +44,6 @@ int arg_man(t_select *select, int argc, char **argv)
 		/* Set the option */
 		set_opt(opt);
 	}
-	select->argv_start_index = *(get_optind());
-	select->max_arg_data = argc - select->argv_start_index;
+	argument_len_check(argc);
 	return(FT_SELECT_SUCCESS);
 }

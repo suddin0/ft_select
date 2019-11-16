@@ -6,6 +6,7 @@ int argument_len_check(int argc)
 
 	index = *(get_optind());
 	if (index >= argc || argc  < 2)
-		return (FT_SELECT_ERROR);
+		exit(0);
+
 	return(FT_SELECT_SUCCESS);
 }

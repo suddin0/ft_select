@@ -1,11 +1,11 @@
 #include "ft_select.h"
 
-int get_data_index(t_select *select)
+int get_data_index(t_data_pack *pack)
 {
 	int index;
 
-	index = select->vdata.cur_top_line * select->vdata.data_par_line;
-	if(index > select->max_arg_data)
+	index = pack->cur_top_line * pack->data_par_line;
+	if(index >= pack->data_size)
 		index = 0;
 	return (index);
 }

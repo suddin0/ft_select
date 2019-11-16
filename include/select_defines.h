@@ -8,13 +8,19 @@
 * it store datas internally
 **/
 
-#ifdef unix
-#  define IS_UNIX 1
+# ifdef unix
+#  define IS_UNIX					1
 #  define TERMCAP_BUFF_SIZE			2048
-#else
+# else
 #  define IS_UNIX					0
 #  define TERMCAP_BUFF_SIZE			0
-#endif
+# endif
+
+# ifdef linux
+#  define IS_LINUX					1
+# else
+#  define IS_LINUX					0
+# endif
 
 # if !defined(FALSE)
 #  define FALSE						0
@@ -64,6 +70,29 @@
 */
 
 # define SELECT_DATA_FD				FT_STDIN_FD
+
+
+# define VISUAL_OUT_OF_BOUND		-1
+# define INDEX_OUT_OF_BOUND			-2
+
+# define VISUAL_DATA_SPACING		1
+
+
+# define FOOTER_HEIGHT				1
+
+/**
+* defines used to control `print_data`
+**/
+
+# define POPT_NO_OPT				0b00000000
+# define POPT_REVERSE				0b00000001
+# define POPT_COLOR					0b00000010
+// # define POPT_HIGHLIGHT				0b00000100
+// # define POPT_HIGHLIGHT				0b00001000
+// # define POPT_HIGHLIGHT				0b00010000
+// # define POPT_HIGHLIGHT				0b00100000
+// # define POPT_HIGHLIGHT				0b01000000
+// # define POPT_HIGHLIGHT				0b10000000
 
 
 #endif

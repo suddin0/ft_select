@@ -2,6 +2,8 @@
 
 int ft_putc(int c)
 {
-	ft_putchar(c);
-	return (1);
+	t_select *select;
+
+	select = get_select();
+	return (write(select->data_fd, &c, 1));
 }

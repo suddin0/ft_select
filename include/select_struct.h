@@ -59,14 +59,33 @@ typedef struct	s_visual_data
 	int	virtual_col;
 	int	virtual_row;
 
-	int	cur_x;
-	int	cur_y;
-	int	cur_top_line;
 
-	int data_par_line;
-	int data_index;
-	int max_data_index;
 }				t_visual_data;
+
+/**
+*
+* max_arg_data : the size of the array `data`
+* max_data_len : the size of the largest string in all elements of `data` array.
+* vdata : contains information about how this data is represented in screen.
+**/
+typedef struct	s_data_packat
+{
+	int				data_fd;
+	t_arg_data		**data;
+	int				data_size; // max_arg_data
+	int				max_str_len; // max_data_len
+
+	int				cur_x;
+	int				cur_y;
+	int				cur_top_line;
+
+	int				data_par_line;
+	int				data_index;
+	int				max_data_index;
+	t_visual_data	*vdata;
+	t_cap			*cap;
+}				t_data_pack;
+
 
 /**
 * The following structure is used to hold most of the program data that is
@@ -106,20 +125,21 @@ typedef struct	s_ft_select_internal_data
 {
 	char			*term_name;
 	char			termcap_buff[TERMCAP_BUFF_SIZE];
+	int				data_fd;
 	struct termios	termios_backup;
 	struct termios	termios_setup;
-
-
-	int				argv_start_index;
-	int				max_arg_data;
-	t_arg_data		*data;
-	int				max_data_len;
-
-	t_visual_data	vdata;
 
 	t_cap			cap;
 	t_keytable 		key_seq_table[MAX_KEY_SEQ_TABLE_LEN];
 	t_keytable 		key_table[MAX_KEY_TABLE_LEN];
+
+	int				argv_start_index;
+	t_arg_data		*data;
+	int				data_size; // max_arg_data
+	int				max_str_len; // max_data_len
+	t_visual_data	vdata;
+
+	t_data_pack		data_pack;
 }				t_select;
 
 #endif
