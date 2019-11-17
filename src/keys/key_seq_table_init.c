@@ -2,17 +2,14 @@
 
 void key_up(UNUSED t_select *select)
 {
-	ft_dprintf(select->data_fd, "DATA_SIZE : %d\n", select->data_size);
-	ft_dprintf(select->data_fd, "SCREEN col : %d\n", select->data_pack.vdata->virtual_col);
-	ft_dprintf(select->data_fd, "SCREEN row : %d\n",  select->data_pack.vdata->virtual_row);
-	ft_dprintf(select->data_fd, "SCREEN dpl : %d\n",  select->data_pack.data_par_line);
-	ft_dprintf(select->data_fd, "SCREEN index : %d\n",  select->data_pack.data_index);
-	ft_dprintf(select->data_fd, "SCREEN max index : %d\n",  select->data_pack.max_data_index);
-
+	curs_move_up(&(select->data_pack));
 }
 
 
-void key_dowm(UNUSED t_select *select){}
+void key_dowm(UNUSED t_select *select)
+{
+	curs_move_down(&(select->data_pack));
+}
 void key_left(t_select *select)
 {
 	curs_move_left(&(select->data_pack));

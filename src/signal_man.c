@@ -2,10 +2,13 @@
 
 void signal_test(int a)
 {
-	ft_printf("SIGNAL : %d\n", a);
+	t_select *select;
+
+	select = get_select();
+	ft_dprintf(select->data_fd, "SIGNAL : %d            \n", a);
 }
 
-void sigwinch_handl(UNUSED int sig)
+void sigwinch_handler(UNUSED int sig)
 {
 	// t_select *select;
 

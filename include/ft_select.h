@@ -103,10 +103,15 @@ int			get_max_data_line(t_data_pack *pack);
 int			get_max_str_len(t_data_pack *pack);
 void		print_pack(t_data_pack *pack);
 
-void		curs_move_up(t_select *select);
-void		curs_move_down(t_select *select);
+void		curs_move_up(t_data_pack *pack);
+void		curs_move_down(t_data_pack *pack);
 void		curs_move_right(t_data_pack *pack);
 void		curs_move_left(t_data_pack *pack);
+
+int			get_max_line_show(t_data_pack *pack);
+int			get_last_line_row(t_data_pack *pack, int max_line_show);
+int			get_last_line_col(t_data_pack *pack, int max_line_show, int last_row);
+
 
 
 #endif

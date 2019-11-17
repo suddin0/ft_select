@@ -17,8 +17,8 @@ static int init_termios(t_select *select)
 	}
 	// select->termios_setup.c_lflag =  ~(ICANON | ECHO);
 	select->termios_setup.c_lflag =  ~(ECHO);
-	// select->termios_setup.c_cc[VMIN] = 1;
-	// select->termios_setup.c_cc[VTIME] = 0;
+	select->termios_setup.c_cc[VMIN] = 1;
+	select->termios_setup.c_cc[VTIME] = 0;
 	if(tcsetattr(select->data_fd, TCSANOW, &select->termios_setup))
 	{
 		ft_dprintf(FT_STDERR_FD, "[-] Error : %s\n", ERR_TERMSETTING);
@@ -32,7 +32,7 @@ static inline void init_cap(t_cap *cap)
 {
 	cap->cm	= 				tgetstr("cm", NULL);
 	cap->ti	= 				tgetstr("ti", NULL);
-	cap->te	= 				tgetstr("ti", NULL);
+	cap->te	= 				tgetstr("te", NULL);
 	cap->vi	=				tgetstr("vi", NULL);
 	cap->ve	=				tgetstr("ve", NULL);
 	cap->cl	=				tgetstr("cl", NULL);

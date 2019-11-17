@@ -6,7 +6,7 @@ void reset_terminal()
 
 	select = get_select();
 	set_cursor(&(select->cap), 0, 0);
-	tputs(select->cap.ve, 1, ft_putc);
 	tputs(select->cap.te, 1, ft_putc);
+	tputs(select->cap.ve, 1, ft_putc);
 	tcsetattr(select->data_fd, TCSANOW, &select->termios_backup);
 }
