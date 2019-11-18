@@ -20,7 +20,7 @@ void set_terminal_size(t_select *select)
 {
 	struct winsize w;
 
-	ioctl(FT_STDIN_FD, TIOCGWINSZ, &w);
+	ioctl(select->data_fd, TIOCGWINSZ, &w);
 	select->vdata.row = w.ws_row;
 	select->vdata.col = w.ws_col;
 

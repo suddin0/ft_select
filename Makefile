@@ -121,6 +121,7 @@ SRC		=		$(MAIN)											\
 				$(P_SRC)/visual/get_max_data_line.c				\
 				$(P_SRC)/visual/print_pack.c					\
 				$(P_SRC)/visual/print_data.c					\
+				$(P_SRC)/visual/select_data.c					\
 
 
 ## Objects without path names

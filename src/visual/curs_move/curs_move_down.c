@@ -12,7 +12,7 @@ void curs_move_down(t_data_pack *pack)
 	if(max_line_data < 2)
 		return ;
 	index = get_off(pack, pack->cur_x, pack->cur_y);
-	next_line_y = index + pack->cur_x + (pack->data_par_line);
+	next_line_y = index + pack->data_par_line;
 	if((y + 1) < pack->vdata->virtual_row && next_line_y < pack->data_size)
 	{
 		pack->cur_y++;
@@ -21,9 +21,7 @@ void curs_move_down(t_data_pack *pack)
 	else
 	{
 		if((y + 1) >= pack->vdata->virtual_row && next_line_y < pack->data_size)
-		{
 			set_cur_top_line(pack, pack->cur_top_line + 1);
-		}
 		else if(next_line_y >= pack->data_size)
 		{
 			pack->cur_y = 0;

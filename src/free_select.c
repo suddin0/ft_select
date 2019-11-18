@@ -2,6 +2,11 @@
 
 void free_select(t_select *select)
 {
+	if(select->data_pack.data)
+	{
+		free(select->data_pack.data);
+		select->data_pack.data = NULL;
+	}
 	if(select->data)
 	{
 		free(select->data);
@@ -29,6 +34,10 @@ void free_select(t_select *select)
 		free(select->cap.mr);
 	if(select->cap.me)
 		free(select->cap.me);
+	if(select->cap.us)
+		free(select->cap.us);
+	if(select->cap.so)
+		free(select->cap.so);
 
 	if(select->cap.key_up)
 		free(select->cap.key_up);

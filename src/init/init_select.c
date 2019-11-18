@@ -16,37 +16,62 @@ void set_select_to_zero(t_select *select)
 	ft_memset(&(select->cap), 0, sizeof(t_cap));
 }
 
-int get_terminal_fd(t_select *select)
+int get_ttyslot()
 {
-	char *tty_name;
 	int slot;
-	int fd;
 
 	slot = ttyslot();
 	if(IS_UNIX && !IS_LINUX)
 	{
 		if(slot == 0)
-		{
-			ft_dprintf(FT_STDERR_FD, "[-] Error getting ttyslot (%d)\n", slot);
 			return (FT_SELECT_ERROR);
-		}
 	}
 	else
 	{
 		if(slot < 0)
-		{
-			ft_dprintf(FT_STDERR_FD, "[-] Error getting ttyslot (%d) : %s\n", slot);
 			return (FT_SELECT_ERROR);
-		}
 	}
+	return (slot);
+}
 
-	tty_name = ttyname(slot);
+char *get_ttyname()
+{
+	int slot;
+	int error_no;
+	char *name;
+
+	error_no = 0;
+	name = NULL;
+	if((slot = get_ttyslot()) == FT_SELECT_ERROR)
+		error_no = errno;
+
+	if((name = ttyname(slot)))
+		return(name);
+	else if((name = ttyname(FT_STDIN_FD)))
+		return (name);
+	else if((name = ttyname(FT_STDOUT_FD)))
+	 	return (name);
+	else if((name = ttyname(FT_STDERR_FD)))
+		return (name);
+	else
+	{
+		if(error_no)
+			ft_dprintf(FT_STDERR_FD, "[-] Error getting ttyslot (%d) : %s\n", slot);
+		ft_dprintf(FT_STDERR_FD, "[-] Error getting ttyname : %s\n", strerror(errno));
+		return (NULL);
+	}
+}
+
+int get_terminal_fd(t_select *select)
+{
+	int fd;
+	char *tty_name;
+
+
+	tty_name = get_ttyname();
 
 	if(!tty_name)
-	{
-		ft_dprintf(FT_STDERR_FD, "[-] Error getting ttyname : %s\n", strerror(errno));
 		return (FT_SELECT_ERROR);
-	}
 	fd = open(tty_name, O_RDWR);
 	if(fd < 0)
 	{

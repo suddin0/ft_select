@@ -7,7 +7,7 @@ int loop(UNUSED t_select *select)
 	int loop_control;
 
 	loop_control = TRUE;
-	while(loop_control && (rd = read(SELECT_DATA_FD, data, READ_DATA_SIZE)) > 0)
+	while(loop_control && (rd = read(select->data_fd, data, READ_DATA_SIZE)) > 0)
 	{
 		data[rd] = 0;
 		if(rd > 1 && data[0] == KEY_ESC)

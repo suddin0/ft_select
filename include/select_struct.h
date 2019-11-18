@@ -33,6 +33,8 @@ typedef struct	s_termcap_capacity
 	char *cd;
 	char *mr;
 	char *me;
+	char *us;
+	char *so;
 
 	/* arro kwys */
 	char *key_up;

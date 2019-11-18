@@ -112,6 +112,7 @@ int			get_max_line_show(t_data_pack *pack);
 int			get_last_line_row(t_data_pack *pack, int max_line_show);
 int			get_last_line_col(t_data_pack *pack, int max_line_show, int last_row);
 
+void		select_data(t_data_pack *pack);
 
 
 #endif

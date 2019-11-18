@@ -11,9 +11,7 @@ static inline void set_cursor_bottom_row(t_data_pack *pack)
 	last_x = get_last_line_col(pack, max_line_show, last_y);
 
 	if (last_x != pack->cur_x)
-		last_y = (last_y - 1) < 0 ? 0 : last_y;
-
-	// pack->cur_x = last_x;
+		last_y = (last_y - 1) < 0 ? 0 : last_y - 1;
 	pack->cur_y = last_y;
 	set_cur_top_line(pack, max_line_show);
 }
@@ -21,7 +19,7 @@ static inline void set_cursor_bottom_row(t_data_pack *pack)
 void curs_move_up(t_data_pack *pack)
 {
 	int max_line_data;
-	int next_line_y;
+	int prev_line_y;
 	int index;
 	int y;
 
@@ -30,17 +28,17 @@ void curs_move_up(t_data_pack *pack)
 	if(max_line_data < 2)
 		return ;
 	index = get_off(pack, pack->cur_x, pack->cur_y);
-	next_line_y = index - pack->cur_x - (pack->data_par_line);
-	if((y - 1) >= 0 && next_line_y > 0)
+	prev_line_y = index - (pack->data_par_line);
+	if((y - 1) >= 0 && prev_line_y >= 0)
 	{
 		pack->cur_y--;
 		get_on(pack, pack->cur_x, pack->cur_y);
 	}
 	else
 	{
-		if((y - 1) < 0 && next_line_y > 0)
+		if((y - 1) < 0 && prev_line_y >= 0)
 			set_cur_top_line(pack, pack->cur_top_line - 1);
-		else if(next_line_y <= 0)
+		else if(prev_line_y < 0)
 			set_cursor_bottom_row(pack);
 		print_pack(pack);
 	}

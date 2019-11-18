@@ -39,6 +39,8 @@ static inline void init_cap(t_cap *cap)
 	cap->cd	=				tgetstr("cd", NULL);
 	cap->mr	=				tgetstr("mr", NULL);
 	cap->me =				tgetstr("me", NULL);
+	cap->us =				tgetstr("us", NULL);
+	cap->so =				tgetstr("so", NULL);
 	cap->key_left =			tgetstr("kl", NULL);
 	cap->key_right =		tgetstr("kr", NULL);
 	cap->key_up =			tgetstr("ku", NULL);
