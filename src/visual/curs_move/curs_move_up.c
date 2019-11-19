@@ -9,8 +9,7 @@ static inline void set_cursor_bottom_row(t_data_pack *pack)
 	max_line_show = get_max_line_show(pack);
 	last_y = get_last_line_row(pack, max_line_show) - 1;
 	last_x = get_last_line_col(pack, max_line_show, last_y);
-
-	if (last_x != pack->cur_x)
+	if (pack->cur_x > last_x)
 		last_y = (last_y - 1) < 0 ? 0 : last_y - 1;
 	pack->cur_y = last_y;
 	set_cur_top_line(pack, max_line_show);
