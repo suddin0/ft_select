@@ -4,8 +4,10 @@
 # include <termcap.h>
 # include <termios.h>
 # include <unistd.h>
+
 # include "select_types.h"
 # include "select_defines.h"
+
 
 typedef struct	s_argument_data
 {
@@ -24,32 +26,11 @@ typedef struct	s_argument_data
 
 typedef struct	s_termcap_capacity
 {
-	char *cm;
-	char *ti;
-	char *vi;
-	char *te;
-	char *ve;
-	char *cl;
-	char *cd;
-	char *mr;
-	char *me;
-	char *us;
-	char *so;
-
-	/* arro kwys */
-	char *key_up;
-	char *key_dowm;
-	char *key_left;
-	char *key_right;
-
-	char *key_delete;
-	char *key_page_up;
-	char *key_page_down;
-	char *key_home;
-	char *key_end;
-	char *key_tab_left;
-	char *key_scroll_up;
-	char *key_scroll_down;
+	char	name[CAP_MAX_SIZE][CAP_MAX_CAHR_SIZE];
+	char	*cap[CAP_MAX_SIZE];
+	int		flag[CAP_MAX_SIZE];
+	int		mand[CAP_MAX_SIZE];
+	char	desc[CAP_MAX_SIZE][DESC_MAX_CAHR_SIZE];
 }				t_cap;
 
 

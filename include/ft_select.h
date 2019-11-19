@@ -63,6 +63,7 @@ int			init_term(t_select *select);
 int			set_arg_data(t_select *select, char **argv);
 int			argument_len_check(int argc);
 int			init_data(t_select *selectm, int argc, char **argv);
+int			get_terminal_fd(t_select *select);
 
 
 t_select	*get_select();

@@ -7,7 +7,7 @@ void set_cursor(t_cap *cap, int x, int y)
 	if(!cap)
 	{
 		select = get_select();
-		cap = &(select)->cap;
+		cap = &(select->cap);
 	}
-	tputs(tgoto(cap->cm, x, y), 1, ft_putc);
+	tputs(tgoto(cap->cap[CAP_CM], x, y), 1, ft_putc);
 }

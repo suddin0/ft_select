@@ -16,24 +16,9 @@ void key_left(t_select *select)
 }
 void key_right(UNUSED t_select *select)
 {
-	// set_cursor(select, 0, 0);
-
-	// tputs(select->cap.cd, 1, ft_putc);
-	// ft_dprintf(SELECT_DATA_FD, "Came here\n");
-	// ft_dprintf(SELECT_DATA_FD, " X %d , cpl %d \n", select->vdata.cur_x, select->vdata.data_par_line);
-	static int a = 0;
-
-
-	// ft_dprintf(SELECT_DATA_FD, " CAME HERE %d\n", a);
-
 	curs_move_right(&(select->data_pack));
-	// if(a % 5 == 0)
-	// 	clear_screen();
-
-	a++;
-
-
 }
+
 void key_delete(UNUSED t_select *select){}
 void key_page_up(UNUSED t_select *select){}
 void key_page_down(UNUSED t_select *select){}

@@ -19,11 +19,16 @@ void key_man(UNUSED t_select *select, char key, int *loop_control)
 	}
 	if(key == KEY_G)
 	{
-		set_cursor(NULL, 0, 5);
-		if(!tgetstr("DL", NULL))
-			ft_dprintf(select->data_fd, "`DL` is NULLLL   \n");
-		else
-			tputs(tgetstr("DL", NULL), 10, ft_putc);
+		set_cursor(&(select->cap), 0, 0);
+		// if(!tgetstr("DL", NULL))
+		// 	ft_dprintf(select->data_fd, "`DL` is NULLLL   \n");
+		// else
+		// {
+			// tputs(tgetstr("DL", NULL), 10, ft_putc);
+			tputs(tgoto(tgetstr("DL", NULL), select->vdata.virtual_row, select->vdata.virtual_row), 1, ft_putc);
+			// tputs(tgetstr("al", NULL), 1, ft_putc);
+
+		// }
 	}
 	if(key == KEY_SPACEC)
 		select_data(&(select->data_pack));

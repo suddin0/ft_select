@@ -90,6 +90,7 @@ SRC		=		$(MAIN)											\
 				$(P_SRC)/init/set_arg_data.c					\
 				$(P_SRC)/init/argument_len_check.c				\
 				$(P_SRC)/init/init_data.c						\
+				$(P_SRC)/init/get_terminal_fd.c					\
 				$(P_SRC)/free_select.c							\
 				$(P_SRC)/signal_man.c							\
 				$(P_SRC)/get_select.c							\

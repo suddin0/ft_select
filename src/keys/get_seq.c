@@ -14,29 +14,29 @@ static inline int check_sek(char *data, char *cap, char *ansi)
 
 int get_seq(t_cap cap, char *data)
 {
-	if(check_sek(data, cap.key_up, ANSI_UP))
+	if(check_sek(data, cap.cap[CAP_KEY_UP], ANSI_UP))
 		return (SEQ_KEY_UP);
-	else if(check_sek(data, cap.key_dowm, ANSI_DOWN))
+	else if(check_sek(data, cap.cap[CAP_KEY_DOWM], ANSI_DOWN))
 		return (SEQ_KEY_DOWN);
-	else if(check_sek(data, cap.key_left, ANSI_LEFT))
+	else if(check_sek(data, cap.cap[CAP_KEY_LEFT], ANSI_LEFT))
 		return (SEQ_KEY_LEFT);
-	else if(check_sek(data, cap.key_right, ANSI_RIGHT))
+	else if(check_sek(data, cap.cap[CAP_KEY_RIGHT], ANSI_RIGHT))
 		return (SEQ_KEY_RIGHT);
-	else if(check_sek(data, cap.key_delete, ANSI_DELETE))
+	else if(check_sek(data, cap.cap[CAP_KEY_DELETE], ANSI_DELETE))
 		return (SEQ_KEY_DELETE);
-	else if(check_sek(data, cap.key_page_up, ANSI_PUP))
+	else if(check_sek(data, cap.cap[CAP_KEY_PAGE_UP], ANSI_PUP))
 		return (SEQ_KEY_PAGE_UP);
-	else if(check_sek(data, cap.key_page_down, ANSI_PDOWN))
+	else if(check_sek(data, cap.cap[CAP_KEY_PAGE_DOWN], ANSI_PDOWN))
 		return (SEQ_KEY_PAGE_DOWN);
-	else if(check_sek(data, cap.key_home, ANSI_HOME))
+	else if(check_sek(data, cap.cap[CAP_KEY_HOME], ANSI_HOME))
 		return (SEQ_KEY_HOME);
-	else if(check_sek(data, cap.key_end, ANSI_END))
+	else if(check_sek(data, cap.cap[CAP_KEY_END], ANSI_END))
 		return (SEQ_KEY_END);
-	else if(check_sek(data, cap.key_tab_left, ANSI_TLEFT))
+	else if(check_sek(data, cap.cap[CAP_KEY_TAB_LEFT], ANSI_TLEFT))
 		return (SEQ_KEY_TAB_LEFT);
-	else if(check_sek(data, cap.key_scroll_up, ANSI_SUP))
+	else if(check_sek(data, cap.cap[CAP_KEY_SCROLL_UP], ANSI_SUP))
 		return (SEQ_SCROLL_UP);
-	else if(check_sek(data, cap.key_scroll_down, ANSI_SDWN))
+	else if(check_sek(data, cap.cap[CAP_KEY_SCROLL_DOWN], ANSI_SDWN))
 		return (SEQ_SCROLL_DOWN);
 	return (SEQ_UNKNOWN);
 }
