@@ -7,6 +7,9 @@ void signal_test(int a)
 
 	select = get_select();
 	ft_dprintf(FT_STDERR_FD, "SIGNAL : %d            \n", a);
+	reset_terminal();
+	free_select(select);
+	exit(1);
 }
 
 void scale_pack(t_data_pack *pack, UNUSED int old_index)
@@ -15,6 +18,7 @@ void scale_pack(t_data_pack *pack, UNUSED int old_index)
 	int data_index;
 	int max_data_index;
 
+	set_cur_top_line(pack, 0);
 	data_par_line = get_data_par_line(pack);
 	data_index = get_data_index(pack);
 	max_data_index = get_max_data_index(pack);
@@ -24,8 +28,8 @@ void scale_pack(t_data_pack *pack, UNUSED int old_index)
 	**/
 	if(old_index >= data_index && old_index < max_data_index)
 	{
-		int new_x = (old_index - pack->data_index) % pack->vdata->virtual_col;
-		int new_y = (old_index - pack->data_index) / pack->vdata->virtual_col;
+		int new_x = (old_index - pack->data_index) % data_par_line;
+		int new_y = (old_index - pack->data_index) / data_par_line;
 		pack->cur_x = new_x;
 		pack->cur_y = new_y;
 	}
@@ -69,9 +73,16 @@ void sigwinch_handler(UNUSED int sig)
 	clear_screen();
 	print_pack(&(select->data_pack));
 	update_footer(select);
-	// ft_dprintf(select->data_fd, "Sigwinch\n");
+
+
+	// ft_dprintf(select->data_fd, "---- X [%d]  Y [%d]  - -- - - start index [%d]",
+	// 	select->data_pack.cur_x,
+	// 	select->data_pack.cur_y,
+	// 	select->data_pack.data_index
+	// );
 	// ft_dprintf(select->data_fd, "Sigwinch\n");
 }
+
 
 void signal_man()
 {

@@ -23,7 +23,9 @@ void set_terminal_size(t_select *select)
 	if(ioctl(select->data_fd, TIOCGWINSZ, &w) == -1)
 	{
 		reset_terminal();
-		ft_dprintf(select->data_fd, "[-] Error : Ioctl failed to get terminal size : %s\n", strerror(errno));
+		ft_dprintf(select->data_fd,\
+			"[-] Error : Ioctl failed to get terminal size : %s\n",\
+			strerror(errno));
 		free_select(select);
 		exit(1);
 	}
@@ -36,7 +38,7 @@ void set_terminal_size(t_select *select)
 
 	select->vdata.last_vline = tgoto(select->cap.cap[CAP_DELETE_N_LINE],\
 		select->vdata.virtual_row, 0);
-	// 
+	//
 	// ft_dprintf(select->data_fd, "-------- TEST ---------\n");
 
 
