@@ -98,6 +98,7 @@ void		set_cursor(t_cap *cap, int x, int y);
 int			index_of(t_data_pack *pack, int x, int y);
 int			get_off(t_data_pack *pack, int x, int y);
 int			get_on(t_data_pack *pack, int x, int y);
+void		clear_vscreen();
 void		clear_screen();
 void		set_cur_top_line(t_data_pack *pack, int line_nb);
 int			get_max_data_line(t_data_pack *pack);
@@ -115,6 +116,12 @@ int			get_last_line_col(t_data_pack *pack, int max_line_show, int last_row);
 
 void		select_data(t_data_pack *pack);
 
+/**
+* Footer related
+**/
+
+void update_footer(t_select *select);
+void clear_footer(t_select *select);
 
 #endif
 

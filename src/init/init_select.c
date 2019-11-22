@@ -17,6 +17,7 @@ static inline void set_select_to_zero(t_select *select)
 
 	ft_memset(&(select->data_pack), 0, sizeof(t_data_pack));
 	ft_memset(&(select->cap), 0, sizeof(t_cap));
+	ft_memset(&(select->footer), 0, sizeof(t_footer));
 	while(i < CAP_MAX_SIZE)
 	{
 		select->cap.cap[i] = NULL;

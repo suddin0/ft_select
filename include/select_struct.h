@@ -28,7 +28,6 @@ typedef struct	s_termcap_capacity
 {
 	char	name[CAP_MAX_SIZE][CAP_MAX_CAHR_SIZE];
 	char	*cap[CAP_MAX_SIZE];
-	int		flag[CAP_MAX_SIZE];
 	int		mand[CAP_MAX_SIZE];
 	char	desc[CAP_MAX_SIZE][DESC_MAX_CAHR_SIZE];
 }				t_cap;
@@ -36,14 +35,19 @@ typedef struct	s_termcap_capacity
 
 typedef struct	s_visual_data
 {
-	int	col;
-	int	row;
+	int		col;
+	int		row;
 
-	int	virtual_col;
-	int	virtual_row;
-
-
+	int		virtual_col;
+	int		virtual_row;
+	char	*last_vline;
 }				t_visual_data;
+
+typedef struct	s_footer
+{
+	int			active;
+
+}				t_footer;
 
 /**
 *
@@ -123,6 +127,7 @@ typedef struct	s_ft_select_internal_data
 	t_visual_data	vdata;
 
 	t_data_pack		data_pack;
+	t_footer		footer;
 }				t_select;
 
 #endif

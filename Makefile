@@ -117,12 +117,15 @@ SRC		=		$(MAIN)											\
 				$(P_SRC)/visual/get_off.c						\
 				$(P_SRC)/visual/get_on.c						\
 				$(P_SRC)/visual/index_of.c						\
+				$(P_SRC)/visual/clear_vscreen.c					\
 				$(P_SRC)/visual/clear_screen.c					\
 				$(P_SRC)/visual/set_cur_top_line.c				\
 				$(P_SRC)/visual/get_max_data_line.c				\
 				$(P_SRC)/visual/print_pack.c					\
 				$(P_SRC)/visual/print_data.c					\
 				$(P_SRC)/visual/select_data.c					\
+				$(P_SRC)/visual/footer/update_footer.c			\
+				$(P_SRC)/visual/footer/clear_footer.c			\
 
 
 ## Objects without path names

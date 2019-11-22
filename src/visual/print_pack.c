@@ -7,7 +7,7 @@ void print_pack(t_data_pack *pack)
 	int y = 0;
 
 	data_index = pack->data_index;
-	clear_screen();
+	clear_vscreen();
 	while(data_index < pack->max_data_index)
 	{
 		// print_data(select, pack, pack->data[data_index], x, y);

@@ -11,5 +11,6 @@ int init_data(t_select *select, int argc, char **argv)
 	if(set_arg_data(select, argv) == FT_SELECT_ERROR)
 		return (FT_SELECT_ERROR);
 	print_pack(&(select->data_pack));
+	update_footer(select);
 	return (FT_SELECT_SUCCESS);
 }

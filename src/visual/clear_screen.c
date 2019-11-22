@@ -6,5 +6,4 @@ void clear_screen()
 
 	select = get_select();
 	tputs(select->cap.cap[CAP_CL], 1, ft_putc);
-	set_cursor(&(select->cap), 0, 0);
 }

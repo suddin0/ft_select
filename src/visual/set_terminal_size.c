@@ -20,10 +20,24 @@ void set_terminal_size(t_select *select)
 {
 	struct winsize w;
 
-	ioctl(select->data_fd, TIOCGWINSZ, &w);
+	if(ioctl(select->data_fd, TIOCGWINSZ, &w) == -1)
+	{
+		reset_terminal();
+		ft_dprintf(select->data_fd, "[-] Error : Ioctl failed to get terminal size : %s\n", strerror(errno));
+		free_select(select);
+		exit(1);
+	}
+
 	select->vdata.row = w.ws_row;
 	select->vdata.col = w.ws_col;
 
 	select->vdata.virtual_col = select->vdata.col;
 	select->vdata.virtual_row = select->vdata.row - FOOTER_HEIGHT;
+
+	select->vdata.last_vline = tgoto(select->cap.cap[CAP_DELETE_N_LINE],\
+		select->vdata.virtual_row, 0);
+	// 
+	// ft_dprintf(select->data_fd, "-------- TEST ---------\n");
+
+
 }
