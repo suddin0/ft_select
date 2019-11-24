@@ -113,21 +113,26 @@
 # define CAP_ME					8
 # define CAP_US					9
 # define CAP_SO					10
-# define CAP_DELETE_N_LINE		11
-# define CAP_DELETE_LINE		12
-# define CAP_KEY_UP				13
-# define CAP_KEY_DOWM			14
-# define CAP_KEY_LEFT			15
-# define CAP_KEY_RIGHT			16
-# define CAP_KEY_DELETE			17
-# define CAP_KEY_PAGE_UP		18
-# define CAP_KEY_PAGE_DOWN		19
-# define CAP_KEY_HOME			20
-# define CAP_KEY_END			21
-# define CAP_KEY_TAB_LEFT		22
-# define CAP_KEY_SCROLL_UP		23
-# define CAP_KEY_SCROLL_DOWN	24
-# define CAP_MAX_SIZE			25
+# define CAP_DL					11
+# define CAP_AL					12
+# define CAP_DELETE_LINE		13
+# define CAP_KEY_UP				14
+# define CAP_KEY_DOWM			15
+# define CAP_KEY_LEFT			16
+# define CAP_KEY_RIGHT			17
+# define CAP_KEY_DELETE			18
+# define CAP_KEY_PAGE_UP		19
+# define CAP_KEY_PAGE_DOWN		20
+# define CAP_KEY_HOME			21
+# define CAP_KEY_END			22
+# define CAP_KEY_TAB_LEFT		23
+# define CAP_KEY_SCROLL_UP		24
+# define CAP_KEY_SCROLL_DOWN	25
+# define CAP_MAX_SIZE			26
+
+# define CAP_PUT_N_LINE_AFTER		CAP_AL
+# define CAP_REM_N_LINE_BEFORE		CAP_DL
+
 
 # define DESC_CM				"Position the cursor at line l, column c."
 # define DESC_TI				"Put the terminal into whatever special mode."
@@ -140,7 +145,8 @@
 # define DESC_ME				"Turns off all appearance modes."
 # define DESC_US				"Turn on underline mode."
 # define DESC_SO				"Enter standout mode."
-# define DESC_DELETE_N_LINE		"Delete n lines starting from cursor position line."
+# define DESC_DL				"Delete n lines of starting from cursor position line."
+# define DESC_AL				"Put n lines of starting from cursor position line."
 # define DESC_DELETE_LINE		"Delete the lien where the cursor is."
 # define DESC_KEY_UP			"Input characters sent by typing the up-arrow key."
 # define DESC_KEY_DOWM			"Input characters sent by typing the down-arrow key."

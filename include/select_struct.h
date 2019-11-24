@@ -40,7 +40,7 @@ typedef struct	s_visual_data
 
 	int		virtual_col;
 	int		virtual_row;
-	char	*last_vline;
+	// char	*last_vline;
 }				t_visual_data;
 
 typedef struct	s_footer

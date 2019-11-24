@@ -39,6 +39,6 @@ void curs_move_up(t_data_pack *pack)
 			set_cur_top_line(pack, pack->cur_top_line - 1);
 		else if(prev_line_y < 0)
 			set_cursor_bottom_row(pack);
-		print_pack(pack);
+		print_pack(pack, TRUE);
 	}
 }

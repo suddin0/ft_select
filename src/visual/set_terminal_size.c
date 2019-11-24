@@ -36,10 +36,4 @@ void set_terminal_size(t_select *select)
 	select->vdata.virtual_col = select->vdata.col;
 	select->vdata.virtual_row = select->vdata.row - FOOTER_HEIGHT;
 
-	select->vdata.last_vline = tgoto(select->cap.cap[CAP_DELETE_N_LINE],\
-		select->vdata.virtual_row, 0);
-	//
-	// ft_dprintf(select->data_fd, "-------- TEST ---------\n");
-
-
 }

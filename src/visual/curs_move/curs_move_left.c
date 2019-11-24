@@ -77,7 +77,7 @@ static inline void move_outside_screen(t_data_pack *pack, int index, int y)
 		pack->cur_y = last_y;
 		set_cur_top_line(pack, max_line_show);
 	}
-	print_pack(pack);
+	print_pack(pack, TRUE);
 }
 
 

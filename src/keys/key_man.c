@@ -32,6 +32,8 @@ void key_man(UNUSED t_select *select, char key, int *loop_control)
 	}
 	if(key == KEY_SPACEC)
 		select_data(&(select->data_pack));
-	if(key == KEY_U)
+	if(key == KEY_F)
 		clear_footer(select);
+	if(key == KEY_S)
+		clear_vscreen();
 }

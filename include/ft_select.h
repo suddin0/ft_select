@@ -103,7 +103,7 @@ void		clear_screen();
 void		set_cur_top_line(t_data_pack *pack, int line_nb);
 int			get_max_data_line(t_data_pack *pack);
 int			get_max_str_len(t_data_pack *pack);
-void		print_pack(t_data_pack *pack);
+void		print_pack(t_data_pack *pack, int clear_screen);
 
 void		curs_move_up(t_data_pack *pack);
 void		curs_move_down(t_data_pack *pack);

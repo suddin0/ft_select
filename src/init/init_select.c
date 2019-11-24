@@ -38,7 +38,8 @@ void set_cap_name(t_cap *cap)
 	ft_strcpy(cap->name[CAP_ME],					"me");
 	ft_strcpy(cap->name[CAP_US],					"us");
 	ft_strcpy(cap->name[CAP_SO],					"so");
-	ft_strcpy(cap->name[CAP_DELETE_N_LINE],			"DL");
+	ft_strcpy(cap->name[CAP_DL],					"DL");
+	ft_strcpy(cap->name[CAP_AL],					"AL");
 	ft_strcpy(cap->name[CAP_DELETE_LINE],			"dl");
 	ft_strcpy(cap->name[CAP_KEY_UP],				"ku");
 	ft_strcpy(cap->name[CAP_KEY_DOWM],				"kd");
@@ -67,7 +68,8 @@ void set_cap_desc(t_cap *cap)
 	ft_strcpy(cap->desc[CAP_ME],					DESC_ME);
 	ft_strcpy(cap->desc[CAP_US],					DESC_US);
 	ft_strcpy(cap->desc[CAP_SO],					DESC_SO);
-	ft_strcpy(cap->desc[CAP_DELETE_N_LINE],			DESC_DELETE_N_LINE);
+	ft_strcpy(cap->desc[CAP_DL],					DESC_DL);
+	ft_strcpy(cap->desc[CAP_AL],					DESC_AL);
 	ft_strcpy(cap->desc[CAP_DELETE_LINE],			DESC_DELETE_LINE);
 	ft_strcpy(cap->desc[CAP_KEY_UP],				DESC_KEY_UP);
 	ft_strcpy(cap->desc[CAP_KEY_DOWM],				DESC_KEY_DOWM);
@@ -96,7 +98,8 @@ void set_cap_mand(t_cap *cap)
 	cap->mand[CAP_ME]				= FALSE;
 	cap->mand[CAP_US]				= FALSE;
 	cap->mand[CAP_SO]				= FALSE;
-	cap->mand[CAP_DELETE_N_LINE]	= TRUE;
+	cap->mand[CAP_DL]				= TRUE;
+	cap->mand[CAP_AL]				= TRUE;
 	cap->mand[CAP_DELETE_LINE]		= TRUE;
 	cap->mand[CAP_KEY_UP]			= FALSE;
 	cap->mand[CAP_KEY_DOWM]			= FALSE;

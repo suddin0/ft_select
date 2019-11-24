@@ -68,6 +68,6 @@ void curs_move_right(t_data_pack *pack)
 			pack->cur_y = 0;
 			set_cur_top_line(pack, 0);
 		}
-		print_pack(pack);
+		print_pack(pack, TRUE);
 	}
 }
